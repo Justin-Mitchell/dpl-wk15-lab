@@ -35,6 +35,44 @@ const Game = () => {
         setSelectedSquares([currentRow, currentCol])
       }
     }
+
+    // 2)
+    // If the user selects an empty square and has previous selection
+    // validates the movement and updates the game state
+    if (squares[currentRow][currentCol] === EMPTY && hasPreviousSelection) {
+      // Check if the movement is valid
+      let isAligned = false
+      let allowedPositions = [
+        [previousRow - 2, previousCol], // up
+        [previousRow + 2, previousCol], // down
+        [previousRow, previousCol - 2], // left
+        [previousRow, previousCol + 2], // right
+      ]
+
+      for (let position of allowedPositions) {
+        let tr = position[0]
+        let tc = position[1]
+        if (tr === currentRow && tc === currentCol) {
+          isAligned = true
+          break
+        }
+      }
+
+      let inbetweenRow = currentRow - Math.sign(currentRow - previousRow)
+      let inbetweenCol = currentCol - Math.sign(currentCol - previousCol)
+
+      // Check if there is a piece to be "eaten" between the movement
+      if (isAligned && squares[inbetweenRow][inbetweenCol] === PIECE) {
+        // Update the game state with the new action
+        squares[inbetweenRow][inbetweenCol] = EMPTY
+        squares[previousRow][previousCol] = EMPTY
+        squares[currentRow][currentCol] = PIECE
+
+        setHistory(cpHistory.concat([{ squares: squares }]))
+        setStepNumber(cpHistory.length)
+        setSelectedSquares([-1,-1])
+      }
+    }
   } 
   
   return (
