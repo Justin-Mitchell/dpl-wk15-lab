@@ -1,11 +1,12 @@
-import React from 'react';
+import React from 'react'
 import Game from './Game'
+import Marquee from './Marquee'
 import '../assets/css/app.css'
 
 function App() {
   return (
     <div className="App">
-      Welcome to Week 15 LAB
+      <Marquee />
       <Game />
     </div>
   );
