@@ -73,7 +73,21 @@ const Game = () => {
         setSelectedSquares([-1,-1])
       }
     }
-  } 
+  }
+
+  const rewindGame = (step) => {
+    setStepNumber(step)
+    setSelectedSquares([-1,-1])
+  }
+
+  const playerMoveHistory = history.map((board, index) => {
+    const desc = index ? `Go to move #${index}` : `Go to game start`
+    return (
+      <li key={index}>
+        <button onClick={() => rewindGame(index)}>{desc}</button>
+      </li>
+    )
+  })
   
   return (
     <div className='game'>
@@ -83,6 +97,9 @@ const Game = () => {
           selectedSquares={selectedSquares}
           onClick={(r,c) => handleClick(r,c)}
         />
+      </div>
+      <div className="game-history">
+        <ol>{playerMoveHistory}</ol>
       </div>
     </div>
   )
