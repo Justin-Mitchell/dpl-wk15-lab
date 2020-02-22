@@ -12,7 +12,10 @@ const Game = () => {
   return (
     <div className='game'>
       <div className='game-board'>
-        <Board />
+        <Board 
+          squares={history[stepNumber].squares}
+          selectedSquares={selectedSquares}
+        />
       </div>
     </div>
   )

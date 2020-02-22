@@ -1,9 +1,11 @@
 import React from 'react'
 import '../assets/css/square.css'
 
-const Square = () => {
+const Square = (props) => {
+  const selected = (props.selectedRow && props.selectedColumn) ? 'selected' : ''
+  const classes = `square ${props.square} ${selected}`
   return (
-    <button className='square'></button>
+    <button className={classes}></button>
   )
 }
 

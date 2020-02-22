@@ -10,3 +10,29 @@
   border-radius: 50%;
   margin: 2px;
 }
+
+.wall {
+  border: none !important;
+}
+
+.piece::before {
+  content: '☻';
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+.piece {
+  color: red;
+}
+
+.selected {
+  color: deepskyblue;
+}
+
+.empty {
+  
+}
+
+.square:focus {
+  outline: none;
+}
