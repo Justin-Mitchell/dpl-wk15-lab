@@ -23,6 +23,10 @@ const Game = () => {
       return arr.slice() // => Make shallow copy of array
     })
 
+    if (isGameOver(squares)) {
+      return
+    }
+
     // 1)
     // If the user selects a piece, updates the state
     // of the game with the selected piece and return
@@ -88,6 +92,19 @@ const Game = () => {
       </li>
     )
   })
+
+  const isGameOver = (squares) => {
+    let halfBoard = Math.floor(BOARD_SIZE / 2)
+    let count = 0
+    for (let row = 0; row < BOARD_SIZE; row++) {
+      for (let col = 0; col < BOARD_SIZE; col++) {
+        if (squares[row][col] === PIECE) {
+          count++
+        }
+      }
+    }
+    return (squares[halfBoard][halfBoard] === PIECE && count === 1)
+  }
   
   return (
     <div className='game'>
