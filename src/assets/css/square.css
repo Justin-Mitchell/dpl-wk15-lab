@@ -1,8 +1,8 @@
 .square {
   background: white;
   float: left;
-  height: 34px;
-  width: 34px;
+  height: 4rem;
+  width: 4rem;
   padding: 0;
   text-align: center;
   z-index: 10;
@@ -13,11 +13,12 @@
 
 .wall {
   border: none !important;
+  background-color: antiquewhite;
 }
 
 .piece::before {
   content: '☻';
-  font-size: 1.7rem;
+  font-size: 3rem;
   font-weight: bold;
 }
 
