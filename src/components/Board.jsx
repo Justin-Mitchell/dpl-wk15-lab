@@ -22,6 +22,7 @@ const Board = (props) => {
                     square={props.squares[row][col]}
                     selectedRow={row === props.selectedSquares[0]}
                     selectedColumn={col === props.selectedSquares[1]}
+                    onClick={(r,c) => {props.onClick(row,col)}}
                   />
                 })
               }
